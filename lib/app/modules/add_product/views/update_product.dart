@@ -1,5 +1,6 @@
 import 'package:appwrite/models.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marketplace_v2/app/controllers/db.dart';
 
 class UpdateProduct extends StatefulWidget {
@@ -128,6 +129,7 @@ class _UpdateProductState extends State<UpdateProduct> {
                   onPressed: () {
                     updateProduct(widget.data.$id, nameControl.text,
                         priceControl.text, descControl.text);
+                    Get.back();
                   },
                   style: ElevatedButton.styleFrom(
                     disabledBackgroundColor: Colors.grey,

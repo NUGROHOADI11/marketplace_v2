@@ -83,6 +83,7 @@ Future<void> deleteProduct(String documentId) async {
     print("Deleted Successfully");
   } catch (e) {
     print("Error deleting product: $e");
+    Get.snackbar('Error', 'Update error: $e', backgroundColor: Colors.red);
   }
 }
 
@@ -106,6 +107,7 @@ Future<void> updateProduct(
     Get.snackbar('Success', 'Update Success', backgroundColor: Colors.green);
     print("Updated Successfully");
   } catch (e) {
-    print("Error while updating product: $e");
+    Get.snackbar('Error', 'Update error: $e', backgroundColor: Colors.red);
+    print("Error while updating product:$e");
   }
 }
