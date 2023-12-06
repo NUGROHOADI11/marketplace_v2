@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marketplace_v2/app/modules/admin/views/product_detail.dart';
+import 'package:marketplace_v2/app/controllers/db.dart';
+import 'package:marketplace_v2/app/modules/add_product/views/update_product.dart';
 import 'package:marketplace_v2/app/routes/app_pages.dart';
-
 import '../controllers/admin_controller.dart';
 
 class ProductScreen extends GetView<AdminController> {
   ProductScreen({Key? key}) : super(key: key);
-  final AdminController controll = Get.put(AdminController());
+  final AdminController controll = Get.find<AdminController>();
 
   @override
   Widget build(BuildContext context) {
@@ -58,14 +58,23 @@ class ProductScreen extends GetView<AdminController> {
                         child: InkWell(
                           borderRadius: BorderRadius.circular(12),
                           onTap: () {
-                            Get.to(() => ProductDetail(
-                                  data: controll.products[index],
-                                ));
+                            // Get.to(() => ProductDetail(
+                            //       data: controll.products[index],
+                            //     ));
                           },
                           child: Padding(
                             padding: const EdgeInsets.all(7),
                             child: Row(
                               children: [
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(12),
+                                  child: Image.network(
+                                    "https://cloud.appwrite.io/v1/storage/buckets/656c59a446175de1c80e/files/${controll.products[index].data['image']}/view?project=65694635ef35f1a85243",
+                                    width: 70,
+                                    height: 90,
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                                 const SizedBox(width: 15),
                                 Expanded(
                                   child: Column(
@@ -95,14 +104,22 @@ class ProductScreen extends GetView<AdminController> {
                                     ],
                                   ),
                                 ),
-                                ClipRRect(
-                                  borderRadius: BorderRadius.circular(12),
-                                  child: Image.network(
-                                    "https://cloud.appwrite.io/v1/storage/buckets/656c59a446175de1c80e/files/${controll.products[index].data['image']}/view?project=65694635ef35f1a85243",
-                                    width: 70,
-                                    height: 90,
-                                    fit: BoxFit.cover,
-                                  ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          Get.to(() => UpdateProduct(
+                                                data: controll.products[index],
+                                              ));
+                                        },
+                                        icon: const Icon(Icons.edit)),
+                                    IconButton(
+                                        onPressed: () {
+                                          deleteProduct(
+                                              controll.products[index].$id);
+                                        },
+                                        icon: const Icon(Icons.delete)),
+                                  ],
                                 ),
                               ],
                             ),
@@ -126,11 +143,11 @@ class ProductScreen extends GetView<AdminController> {
           borderRadius:
               BorderRadius.circular(10.0), // Adjust the radius as needed
         ),
-        child: Icon(
+        backgroundColor: Colors.orange,
+        child: const Icon(
           Icons.add,
           color: Colors.black,
         ),
-        backgroundColor: Colors.orange,
       ),
     );
   }

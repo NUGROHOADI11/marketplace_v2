@@ -53,11 +53,6 @@ class SplashView extends GetView<SplashController> {
                       InkWell(
                         onTap: () {
                           Get.offAll(() => const Splash2());
-                          Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Splash2()),
-                          );
                         },
                         child: Container(
                             height: height * 0.065,

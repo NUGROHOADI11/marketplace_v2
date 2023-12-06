@@ -12,7 +12,7 @@ class AdminView extends GetView<AdminController> {
   final height = Get.mediaQuery.size.height * 1;
   final width = Get.mediaQuery.size.width * 1;
   AdminView({Key? key}) : super(key: key);
-  final AdminController controll = Get.put(AdminController());
+  final AdminController controll = Get.find<AdminController>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(

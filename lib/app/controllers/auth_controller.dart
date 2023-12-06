@@ -40,7 +40,7 @@ Future loginUser(String email, String password) async {
 // Logout
 Future logoutUser() async {
   await account.deleteSession(sessionId: 'current');
-  Get.offAllNamed(Routes.LOGIN);
+  Get.offAllNamed(Routes.SPLASH);
 }
 
 // Check Session

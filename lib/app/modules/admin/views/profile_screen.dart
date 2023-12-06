@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:marketplace_v2/app/controllers/auth_controller.dart';
 import 'package:marketplace_v2/app/modules/admin/controllers/admin_controller.dart';
-
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
   final height = Get.mediaQuery.size.height * 1;
   final width = Get.mediaQuery.size.width * 1;
-  final AdminController controll = Get.put(AdminController());
+  final AdminController controll = Get.find<AdminController>();
 
   @override
   Widget build(BuildContext context) {
@@ -67,10 +65,10 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color(0xffFFF5E9),
                   borderRadius: BorderRadius.circular(10)),
-              child:  ListTile(
-                title: Text("Username"),
+              child: ListTile(
+                title: const Text("Username"),
                 subtitle: Text(controll.userName),
-                trailing: Icon(
+                trailing: const Icon(
                   Icons.arrow_drop_down_sharp,
                   color: Colors.black,
                 ),
@@ -97,7 +95,7 @@ class ProfileScreen extends StatelessWidget {
               decoration: BoxDecoration(
                   color: const Color(0xffFFF5E9),
                   borderRadius: BorderRadius.circular(10)),
-              child:  ListTile(
+              child: ListTile(
                 title: const Text("Email"),
                 subtitle: Text(controll.email),
               ),
@@ -130,7 +128,8 @@ class ProfileScreen extends StatelessWidget {
             ),
             InkWell(
               onTap: () async {
-                await logoutUser();
+                // await logoutUser();
+                controll.logout();
               },
               child: Container(
                   height: 40,

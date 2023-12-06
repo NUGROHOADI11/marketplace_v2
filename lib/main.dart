@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:marketplace_v2/app/controllers/save_data.dart';
 
 import 'app/routes/app_pages.dart';
 import 'app/utils/check_session.dart';
 
 void main() async {
+  await GetStorage.init();
   WidgetsFlutterBinding.ensureInitialized();
   await SaveData.init();
   runApp(const MyApp());

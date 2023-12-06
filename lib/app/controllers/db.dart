@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:marketplace_v2/app/controllers/save_data.dart';
 import 'auth_controller.dart';
 import 'package:appwrite/appwrite.dart';
@@ -67,5 +69,43 @@ Future getAllProduct() async {
     return data.documents;
   } catch (e) {
     print(e);
+  }
+}
+
+Future<void> deleteProduct(String documentId) async {
+  try {
+    await db.deleteDocument(
+      databaseId: dbId,
+      collectionId: collectionProduct,
+      documentId: documentId,
+    );
+    Get.snackbar('Success', 'Delete Success', backgroundColor: Colors.green);
+    print("Deleted Successfully");
+  } catch (e) {
+    print("Error deleting product: $e");
+  }
+}
+
+Future<void> updateProduct(
+  String documentId,
+  String newName,
+  String newPrice,
+  String newDesc,
+) async {
+  try {
+    await db.updateDocument(
+      databaseId: dbId,
+      collectionId: collectionProduct,
+      documentId: documentId,
+      data: {
+        "name": newName,
+        "description": newDesc,
+        "price": newPrice,
+      },
+    );
+    Get.snackbar('Success', 'Update Success', backgroundColor: Colors.green);
+    print("Updated Successfully");
+  } catch (e) {
+    print("Error while updating product: $e");
   }
 }

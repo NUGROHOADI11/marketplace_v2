@@ -50,7 +50,7 @@ class Splash2 extends StatelessWidget {
                       // Spacer(),
                       InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.LOGIN_ADMIN);
+                          Get.toNamed(Routes.LOGIN);
                         },
                         child: Container(
                             height: height * 0.055,
@@ -60,7 +60,7 @@ class Splash2 extends StatelessWidget {
                                 color: const Color(0xFFDC5F00)),
                             child: Center(
                               child: Text(
-                                "Admin",
+                                "Login",
                                 style: GoogleFonts.poppins(
                                     fontSize: 16, fontWeight: FontWeight.w600),
                               ),
@@ -69,10 +69,9 @@ class Splash2 extends StatelessWidget {
                       SizedBox(
                         height: height * 0.001,
                       ),
-
                       InkWell(
                         onTap: () {
-                          Get.toNamed(Routes.LOGIN);
+                          Get.toNamed(Routes.SIGNUP);
                         },
                         child: Container(
                             height: height * 0.055,
@@ -88,7 +87,7 @@ class Splash2 extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                "Customer",
+                                "Signup",
                                 style: GoogleFonts.poppins(
                                     fontSize: 16,
                                     fontWeight: FontWeight.w600,
