@@ -1,13 +1,9 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:get_storage/get_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:marketplace_v2/app/data/models/product_model.dart';
-import 'package:marketplace_v2/app/utils/appwrite_constant.dart';
-
 import '../../../data/repository/auth_repository.dart';
-import '../../../routes/app_pages.dart';
 
 class AddProductController extends GetxController {
   AuthRepository authRepository;

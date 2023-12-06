@@ -10,7 +10,7 @@ class LoginView extends GetView<LoginController> {
   final height = Get.mediaQuery.size.height * 1;
   final width = Get.mediaQuery.size.width * 1;
   @override
-  LoginController controller = Get.find<LoginController>();
+  final LoginController controller = Get.find<LoginController>();
 
   LoginView({Key? key}) : super(key: key);
   @override

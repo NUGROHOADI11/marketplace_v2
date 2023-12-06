@@ -5,7 +5,7 @@ import 'package:marketplace_v2/app/modules/add_product/controllers/add_product_c
 
 class AddProductView extends GetView<AddProductController> {
   @override
-  AddProductController controller = Get.find<AddProductController>();
+  final AddProductController controller = Get.find<AddProductController>();
   AddProductView({super.key});
 
   @override
